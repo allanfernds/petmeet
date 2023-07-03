@@ -29,6 +29,7 @@ function CreateLostPetForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e.target.files);
     createLostPet(pet, image);
   };
 
