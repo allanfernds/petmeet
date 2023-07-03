@@ -1,5 +1,22 @@
 import { db } from './firebaseConfig';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { generateUniqueFileName } from '../../utils';
+
+// const novoPetPerdido = {
+
+//   name: 'Bella',
+//   type: 'dog',
+//   breed: 'Labrador Retriever',
+//   description: 'Bella is a playful and friendly dog with a black coat.',
+//   location: 'Central Park',
+//   lastSeenDate: '2023-06-29',
+//   contact: {
+//     name: 'Jane Doe',
+//     email: 'janedoe@example.com',
+//     phone: '987-654-3210',
+//   },
+// };
 
 const lostPetsCollection = collection(db, 'lostPets');
 
@@ -51,25 +68,37 @@ const getPetsByType = async (type) => {
   return filteredPets;
 };
 
-// const novoPetPerdido = {
-//   name: 'Bella',
-//   type: 'dog',
-//   breed: 'Labrador Retriever',
-//   description: 'Bella is a playful and friendly dog with a black coat.',
-//   location: 'Central Park',
-//   lastSeenDate: '2023-06-29',
-//   contact: {
-//     name: 'Jane Doe',
-//     email: 'janedoe@example.com',
-//     phone: '987-654-3210',
-//   },
+
+// const createLostPet = async (pet) => {
+//   await addDoc(lostPetsCollection, {
+//     ...pet,
+//   });
 // };
 
-const createLostPet = async (pet) => {
-  await addDoc(lostPetsCollection, {
-    ...pet,
-  });
+const createLostPet = async (pet, image) => {
+  const storage = getStorage();
+  const storageRef = ref(storage, `lost-pets/${generateUniqueFileName(pet)}.png`);
+
+  try {
+    // Faz o upload da imagem para o Firebase Storage
+    const snapshot = await uploadBytes(storageRef, image);
+
+    // Obtém a URL da imagem no Firebase Storage
+    const imageUrl = await getDownloadURL(snapshot.ref);
+
+    // Adiciona a URL da imagem ao objeto pet
+    const petWithImage = { ...pet, image: imageUrl };
+
+    // Adiciona os dados do pet ao Firestore
+    await addDoc(collection(db, 'lostPets'), petWithImage);
+
+    console.log('Pet perdido criado com sucesso!');
+  } catch (error) {
+    console.error('Erro ao criar pet perdido:', error);
+  }
 };
+
+
 
 export {
   listAllLostPets,
