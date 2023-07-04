@@ -1,4 +1,4 @@
-const generateUniqueFileName = (pet) => {
+const generateUniquePetFileName = (pet) => {
  const { name, type, breed } = pet;
  const timestamp = Date.now();
 
@@ -7,6 +7,16 @@ const generateUniqueFileName = (pet) => {
  return fileName;
 };
 
+const generateUniqueUserFileName = (userName) => {
+ const timestamp = Date.now();
+
+ const fileName = `${userName}_profileImage_${timestamp}`;
+
+ return fileName;
+};
+
+
 export {
- generateUniqueFileName
+ generateUniquePetFileName,
+ generateUniqueUserFileName
 }

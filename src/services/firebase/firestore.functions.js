@@ -1,7 +1,7 @@
-import { db } from './firebaseConfig';
+import  db from './firebaseConfig';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { addDoc, collection, getDocs } from 'firebase/firestore';
-import { generateUniqueFileName } from '../../utils';
+import { generateUniquePetFileName } from '../../utils';
 
 // const novoPetPerdido = {
 
@@ -77,7 +77,7 @@ const getPetsByType = async (type) => {
 
 const createLostPet = async (pet, image) => {
   const storage = getStorage();
-  const storageRef = ref(storage, `lost-pets/${generateUniqueFileName(pet)}.png`);
+  const storageRef = ref(storage, `lost-pets/${generateUniquePetFileName(pet)}.png`);
 
   try {
     // Faz o upload da imagem para o Firebase Storage

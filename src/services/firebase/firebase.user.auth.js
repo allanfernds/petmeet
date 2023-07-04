@@ -1,10 +1,9 @@
 import {
   RecaptchaVerifier,
-  getAuth,
   signInWithPhoneNumber,
 } from 'firebase/auth';
+import { auth } from './firebaseConfig';
 
-const auth = getAuth();
 
 window.recaptchaVerifier = new RecaptchaVerifier(
   'sign-in-button',
