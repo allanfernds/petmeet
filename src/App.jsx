@@ -1,13 +1,33 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import CreateLostPetForm from './components/ImageUploader';
+import PhoneSignUp from './pages/PhoneSignUp';
+import { UserAuthContextProvider } from './context/UserAuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
+import LoginPage from './pages/LoginPage';
+import ProfileCheck from './components/ProfileCheck';
+import UpdateUserInfo from './pages/UpdateUserInfo';
+// import CreateLostPetForm from './components/CreateLostPetForm';
 
 function App() {
   return (
     <>
-      <div>
-        <h1>PetFinder</h1>
-        <CreateLostPetForm />
-      </div>
+      <UserAuthContextProvider>
+        <Routes>
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/profilecheck" element={<ProfileCheck />} />
+          <Route path="/update-user-info" element={<UpdateUserInfo />} />
+          <Route path="/phonesignup" element={<PhoneSignUp />} />
+        </Routes>
+      </UserAuthContextProvider>
     </>
   );
 }
