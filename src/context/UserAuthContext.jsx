@@ -6,7 +6,8 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from 'firebase/auth';
-import { auth } from '../firebase';
+
+import { auth } from '../services/firebase/firebaseConfig';
 
 const userAuthContext = createContext();
 
