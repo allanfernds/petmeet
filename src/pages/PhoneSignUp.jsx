@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { useUserAuth } from '../context/UserAuthContext';
 
 const PhoneSignUp = () => {
