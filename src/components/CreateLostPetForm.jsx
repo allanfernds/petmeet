@@ -19,6 +19,7 @@ function CreateLostPetForm() {
       phone: '',
     },
     imageUrl: '',
+    offerReward: false,
   });
   const [imageUrl, setImage] = useState(null);
 
