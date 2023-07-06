@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import ProfileCheck from './components/ProfileCheck';
 import UpdateUserInfo from './pages/UpdateUserInfo';
+import CreateLostPetForm from './components/CreateLostPetForm';
 // import CreateLostPetForm from './components/CreateLostPetForm';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/profilecheck" element={<ProfileCheck />} />
           <Route path="/update-user-info" element={<UpdateUserInfo />} />
           <Route path="/phonesignup" element={<PhoneSignUp />} />
+          <Route path="/create-lost-pet" element={<CreateLostPetForm />} />
         </Routes>
       </UserAuthContextProvider>
     </>
