@@ -83,7 +83,7 @@ const createLostPet = async (pet, image) => {
     const petWithImage = { ...pet, imageUrl };
 
     // Adiciona os dados do pet ao Firestore
-    await addDoc(collection(db, 'lostPets'), petWithImage);
+    await addDoc(collection(db, 'lostPets'), {...petWithImage, found: false});
 
     console.log('Pet perdido criado com sucesso!');
   } catch (error) {
