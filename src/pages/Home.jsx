@@ -9,7 +9,6 @@ function Home() {
   return (
     <div>
       <Header />
-      Home
       <button onClick={logOut}>Sair</button>
       <br />
       <br />

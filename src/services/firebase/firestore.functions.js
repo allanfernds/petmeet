@@ -3,20 +3,8 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { generateUniquePetFileName } from '../../utils';
 
-// const novoPetPerdido = {
 
-//   name: 'Bella',
-//   type: 'dog',
-//   breed: 'Labrador Retriever',
-//   description: 'Bella is a playful and friendly dog with a black coat.',
-//   location: 'Central Park',
-//   lastSeenDate: '2023-06-29',
-//   contact: {
-//     name: 'Jane Doe',
-//     email: 'janedoe@example.com',
-//     phone: '987-654-3210',
-//   },
-// };
+console.log()
 
 const lostPetsCollection = collection(db, 'lostPets');
 
@@ -80,10 +68,10 @@ const createLostPet = async (pet, image) => {
     const imageUrl = await getDownloadURL(snapshot.ref);
 
     // Adiciona a URL da imagem ao objeto pet
-    const petWithImage = { ...pet, imageUrl };
+    const petWithImage = { ...pet, imageUrl, };
 
     // Adiciona os dados do pet ao Firestore
-    await addDoc(collection(db, 'lostPets'), {...petWithImage, found: false});
+    await addDoc(collection(db, 'lostPets'), petWithImage);
 
     console.log('Pet perdido criado com sucesso!');
   } catch (error) {

@@ -5,6 +5,7 @@ import {
 import { auth } from './firebaseConfig';
 
 
+
 window.recaptchaVerifier = new RecaptchaVerifier(
   'sign-in-button',
   {

@@ -1,6 +1,7 @@
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { generateUniqueUserFileName } from '../../utils';
 import { updateProfile } from 'firebase/auth';
+
 const storage = getStorage();
 
 const updateUserInfo = async (user, displayName, image) => {

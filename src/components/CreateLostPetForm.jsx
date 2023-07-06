@@ -20,6 +20,7 @@ function CreateLostPetForm() {
     },
     imageUrl: '',
     offerReward: false,
+    found: false,
   });
   const [imageUrl, setImage] = useState(null);
 
@@ -50,7 +51,6 @@ function CreateLostPetForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createLostPet(pet, imageUrl);
-    console.log(user);
   };
 
   return (
