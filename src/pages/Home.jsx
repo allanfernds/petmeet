@@ -1,11 +1,14 @@
+import Header from '../components/Header';
 import { useUserAuth } from '../context/UserAuthContext';
 import { Link } from 'react-router-dom';
+import LostPetsList from './LostPetsList';
 
 function Home() {
   const { logOut } = useUserAuth();
 
   return (
     <div>
+      <Header />
       Home
       <button onClick={logOut}>Sair</button>
       <br />
@@ -13,6 +16,7 @@ function Home() {
       <Link to="/create-lost-pet">
         <button>Perdi meu pet</button>
       </Link>
+      <LostPetsList />
     </div>
   );
 }
