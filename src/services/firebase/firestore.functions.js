@@ -10,8 +10,12 @@ const lostPetsCollection = collection(db, 'lostPets');
 
 const listAllLostPets = async () => {
   const querySnapshot = await getDocs(lostPetsCollection);
-  const docPetsData = querySnapshot.docs.map((doc) => doc.data());
+  const docPetsData = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data()
+  }));
 
+  console.log(docPetsData)
   return docPetsData;
 };
 
