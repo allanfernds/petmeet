@@ -15,7 +15,6 @@ const listAllLostPets = async () => {
     ...doc.data()
   }));
 
-  console.log(docPetsData)
   return docPetsData;
 };
 
