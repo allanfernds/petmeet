@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import ProfileCheck from './components/ProfileCheck';
 import UpdateUserInfo from './pages/UpdateUserInfo';
 import CreateLostPetForm from './components/CreateLostPetForm';
+import Header from './components/Header';
+// import CreateLostPetForm from './components/CreateLostPetForm';
 
 function App() {
   return (
