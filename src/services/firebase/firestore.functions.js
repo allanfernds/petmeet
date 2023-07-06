@@ -1,4 +1,4 @@
-import  db from './firebaseConfig';
+import { db } from './firebaseConfig';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { generateUniquePetFileName } from '../../utils';
@@ -68,13 +68,6 @@ const getPetsByType = async (type) => {
   return filteredPets;
 };
 
-
-// const createLostPet = async (pet) => {
-//   await addDoc(lostPetsCollection, {
-//     ...pet,
-//   });
-// };
-
 const createLostPet = async (pet, image) => {
   const storage = getStorage();
   const storageRef = ref(storage, `lost-pets/${generateUniquePetFileName(pet)}.png`);
@@ -87,7 +80,7 @@ const createLostPet = async (pet, image) => {
     const imageUrl = await getDownloadURL(snapshot.ref);
 
     // Adiciona a URL da imagem ao objeto pet
-    const petWithImage = { ...pet, image: imageUrl };
+    const petWithImage = { ...pet, imageUrl };
 
     // Adiciona os dados do pet ao Firestore
     await addDoc(collection(db, 'lostPets'), petWithImage);
