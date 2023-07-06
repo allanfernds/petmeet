@@ -8,8 +8,7 @@ import LoginPage from './pages/LoginPage';
 import ProfileCheck from './components/ProfileCheck';
 import UpdateUserInfo from './pages/UpdateUserInfo';
 import CreateLostPetForm from './components/CreateLostPetForm';
-import Header from './components/Header';
-// import CreateLostPetForm from './components/CreateLostPetForm';
+import LostPetDetailsPage from './pages/LostPetDetailsPage';
 
 function App() {
   return (
@@ -29,6 +28,7 @@ function App() {
           <Route path="/update-user-info" element={<UpdateUserInfo />} />
           <Route path="/phonesignup" element={<PhoneSignUp />} />
           <Route path="/create-lost-pet" element={<CreateLostPetForm />} />
+          <Route path="/lost-pets/:petId" element={<LostPetDetailsPage />} />
         </Routes>
       </UserAuthContextProvider>
     </>
