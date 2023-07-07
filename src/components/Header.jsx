@@ -8,6 +8,9 @@ function Header() {
       <Link to="/home">
         <button>Home</button>
       </Link>
+      <Link to="/profile">
+        <button>Perfil</button>
+      </Link>
     </div>
   );
 }
