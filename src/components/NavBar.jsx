@@ -1,17 +1,118 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+// import { Link } from 'react-router-dom';
 
 function NavBar() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleSearchIconClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
   return (
-    <div>
-      <p>Logo</p>
-      <h1>PetFinder</h1>
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
-      <Link to="/profile">
-        <button>Perfil</button>
-      </Link>
-    </div>
+    <nav className="bg-white py-4 px-6">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <button className="text-gray-800 mr-4 focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#313131"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </button>
+          <h1 className="text-gray-800 text-2xl">PetFinder</h1>
+        </div>
+
+        <div className="flex items-center">
+          <button
+            className="text-gray-800 ml-4 focus:outline-none"
+            onClick={handleSearchIconClick}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#313131"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 4c-2.209 0-4 1.791-4 4 0 .764.218 1.478.584 2.091l-4.55 4.55a.999.999 0 101.414 1.414l4.55-4.55A6.963 6.963 0 0012 18c2.209 0 4-1.791 4-4s-1.791-4-4-4z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {isSearchOpen && (
+        <div className="mt-4">
+          <div className="flex items-center">
+            <input
+              type="text"
+              className="bg-gray-200 rounded-l-full py-2 pr-4 pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
+              placeholder="Search"
+            />
+            <button className="bg-gray-200 rounded-r-full py-2 px-4 focus:outline-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#313131"
+                onClick={handleSearchIconClick}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div className="mt-4 flex justify-between items-center ">
+            <input
+              type="radio"
+              id="location"
+              name="searchFilter"
+              className="ml-1"
+            />
+            <label htmlFor="location" className="text-gray-800 mr-4">
+              Location
+            </label>
+            <input
+              type="radio"
+              id="breed"
+              name="searchFilter"
+              className="ml-1"
+            />
+            <label htmlFor="breed" className="text-gray-800 mr-4">
+              Breed
+            </label>
+            <input
+              type="radio"
+              id="date"
+              name="searchFilter"
+              className="ml-1"
+            />
+            <label htmlFor="date" className="text-gray-800">
+              Date
+            </label>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
 
