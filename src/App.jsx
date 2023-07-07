@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import PhoneSignUp from './pages/PhoneSignUp';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
