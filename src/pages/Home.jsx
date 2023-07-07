@@ -10,8 +10,7 @@ function Home() {
     <div>
       <Header />
       <button onClick={logOut}>Sair</button>
-      <br />
-      <br />
+      <hr />
       <Link to="/create-lost-pet">
         <button>Perdi meu pet</button>
       </Link>
