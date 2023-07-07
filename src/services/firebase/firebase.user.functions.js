@@ -11,22 +11,34 @@ const updateUserInfo = async (user, displayName, image) => {
   );
 
   try {
-    // Faz o upload da imagem para o Firebase Storage
-    const snapshot = await uploadBytes(storageRef, image);
+    // Cria um objeto para armazenar as propriedades que serão atualizadas
+    const updateData = {};
 
-    // Obtém a URL da imagem no Firebase Storage
-    const photoURL = await getDownloadURL(snapshot.ref);
+    // Verifica se displayName foi fornecido e adiciona ao objeto updateData
+    if (displayName) {
+      updateData.displayName = displayName;
+    }
 
-    // Adiciona a URL da imagem ao objeto pet
-    updateProfile(user, {
-      displayName,
-      photoURL,
-    });
+    // Verifica se image foi fornecido e faz o upload da imagem
+    if (image) {
+      const snapshot = await uploadBytes(storageRef, image);
+      const photoURL = await getDownloadURL(snapshot.ref);
+      updateData.photoURL = photoURL;
+    }
 
-    console.log('Perfil do usuário atualizado com sucesso.');
+    // Verifica se há alguma propriedade para atualizar
+    if (Object.keys(updateData).length > 0) {
+      // Chama a função updateProfile com o objeto updateData
+      await updateProfile(user, updateData);
+      console.log('Perfil do usuário atualizado com sucesso.');
+    } else {
+      console.log('Nada para atualizar.');
+    }
   } catch (error) {
     console.error('Ocorreu um erro ao atualizar o perfil do usuário:', error);
   }
 };
+
+
 
 export { updateUserInfo };
