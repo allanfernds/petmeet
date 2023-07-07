@@ -3,10 +3,12 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../services/firebase/firebaseConfig';
 import { useUserAuth } from '../context/UserAuthContext';
 import { getPetsByuserUid } from '../services/firebase/firestore.functions';
+import NavBar from '../components/NavBar';
 
 function UserPetsList() {
   const { user } = useUserAuth();
   const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserPets = async () => {
@@ -14,6 +16,7 @@ function UserPetsList() {
         if (user && user.uid) {
           const userPets = await getPetsByuserUid(user.uid);
           setPets(userPets);
+          setLoading(false); // Define o loading como falso quando os pets são obtidos
         }
       } catch (error) {
         console.error('Error fetching my pets:', error);
@@ -37,11 +40,16 @@ function UserPetsList() {
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>; // Renderiza uma mensagem de carregamento enquanto os pets estão sendo obtidos
+  }
+
   return (
     <div>
+      <NavBar />
       <h2>My Pets</h2>
       {pets.map((pet) => (
-        <div key={pet.id}>
+        <div key={pet.id} className="card">
           <h3>{pet.name}</h3>
           <p>Type: {pet.type}</p>
           <p>Breed: {pet.breed}</p>
