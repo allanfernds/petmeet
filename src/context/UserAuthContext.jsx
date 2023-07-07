@@ -30,7 +30,11 @@ export function UserAuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log('Auth', currentuser);
+      console.log(
+        currentuser
+          ? `Usuário ${currentuser.displayName} autenticado`
+          : 'Nenhum usuário autenticado'
+      );
       setUser(currentuser);
     });
 
