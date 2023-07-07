@@ -25,9 +25,23 @@ function App() {
           />
           <Route path="/" element={<LoginPage />} />
           <Route path="/profilecheck" element={<ProfileCheck />} />
-          <Route path="/update-user-info" element={<UpdateUserInfo />} />
+          <Route
+            path="/update-user-info"
+            element={
+              <ProtectedRoute>
+                <UpdateUserInfo />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/phonesignup" element={<PhoneSignUp />} />
-          <Route path="/create-lost-pet" element={<CreateLostPetForm />} />
+          <Route
+            path="/create-lost-pet"
+            element={
+              <ProtectedRoute>
+                <CreateLostPetForm />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/lost-pets/:petId" element={<LostPetDetailsPage />} />
         </Routes>
       </UserAuthContextProvider>
