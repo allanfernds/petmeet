@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../services/firebase/firebaseConfig';
 
-function Header() {
+function NavBar() {
   return (
     <div>
       <h2>Detalhes do Pet</h2>
@@ -40,7 +40,7 @@ function LostPetDetailsPage() {
 
   return (
     <div>
-      <Header />
+      <NavBar />
       {pet && (
         <>
           <h1>{pet.name}</h1>

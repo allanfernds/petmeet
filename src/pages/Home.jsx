@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 import { useUserAuth } from '../context/UserAuthContext';
 import { Link } from 'react-router-dom';
 import LostPetsList from './LostPetsList';
@@ -8,7 +8,7 @@ function Home() {
 
   return (
     <div>
-      <Header />
+      <NavBar />
       <button onClick={logOut}>Sair</button>
       <hr />
       <Link to="/create-lost-pet">
