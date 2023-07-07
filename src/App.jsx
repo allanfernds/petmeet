@@ -10,6 +10,7 @@ import UpdateUserInfo from './pages/UpdateUserInfo';
 import CreateLostPetForm from './components/CreateLostPetForm';
 import LostPetDetailsPage from './pages/LostPetDetailsPage';
 import ProfileInfo from './pages/ProfileInfos';
+import UserPetsList from './pages/UserPetsList';
 
 function App() {
   return (
@@ -49,6 +50,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProfileInfo />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user-pets-list"
+            element={
+              <ProtectedRoute>
+                <UserPetsList />
               </ProtectedRoute>
             }
           />
