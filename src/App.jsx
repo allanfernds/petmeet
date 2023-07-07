@@ -9,6 +9,7 @@ import ProfileCheck from './components/ProfileCheck';
 import UpdateUserInfo from './pages/UpdateUserInfo';
 import CreateLostPetForm from './components/CreateLostPetForm';
 import LostPetDetailsPage from './pages/LostPetDetailsPage';
+import ProfileInfo from './pages/ProfileInfos';
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
             }
           />
           <Route path="/lost-pets/:petId" element={<LostPetDetailsPage />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfileInfo />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </UserAuthContextProvider>
     </>
