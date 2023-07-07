@@ -1,6 +1,6 @@
 import { db } from './firebaseConfig';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { generateUniquePetFileName } from '../../utils';
 
 
@@ -17,6 +17,22 @@ const listAllLostPets = async () => {
 
   return docPetsData;
 };
+
+const getPetsByuserUid = async (userUid) => {
+    try {
+      const petsRef = collection(db, 'lostPets');
+      const q = query(petsRef, where('userId', '==', userUid));
+
+      const querySnapshot = await getDocs(q);
+      const userPets = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      return userPets
+    } catch (error) {
+      console.log(error.message)
+    }
+}
 
 const getPetsByLocation = async (location) => {
   const querySnapshot = await getDocs(lostPetsCollection);
@@ -86,6 +102,7 @@ const createLostPet = async (pet, image) => {
 
 export {
   listAllLostPets,
+  getPetsByuserUid,
   getPetsByLocation,
   getPetsByType,
   getPetsByBreed,
