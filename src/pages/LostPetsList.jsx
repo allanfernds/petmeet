@@ -22,13 +22,15 @@ function LostPetsList() {
   }
 
   return (
-    <div>
-      <h2>Lost Pets</h2>
-      {pets.map((pet, index) => (
-        <Link key={index} to={`/lost-pets/${pet.id}`}>
-          <LostPetCard pet={pet} />
-        </Link>
-      ))}
+    <div className="flex flex-col items-center mx-2 h-screen">
+      <h2 className="text-2xl font-bold mb-4">Lost Pets</h2>
+      <div className="overflow-y-auto">
+        {pets.map((pet, index) => (
+          <Link key={index} to={`/lost-pets/${pet.id}`}>
+            <LostPetCard pet={pet} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
