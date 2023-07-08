@@ -1,18 +1,31 @@
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { BiSearchAlt } from 'react-icons/bi';
+import SideBar from './SideBar';
 
 function NavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const handleSearchIconClick = () => {
     setIsSearchOpen(!isSearchOpen);
+  };
+
+  const handleSideBarToggle = () => {
+    setIsSideBarOpen(!isSideBarOpen);
+  };
+
+  const handleCloseSideBar = () => {
+    setIsSideBarOpen(false);
   };
 
   return (
     <nav className="bg-white py-4 px-6">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <button className="text-gray-800 mr-4 focus:outline-none">
+          <button
+            className="text-gray-800 mr-4 focus:outline-none"
+            onClick={handleSideBarToggle}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -36,20 +49,7 @@ function NavBar() {
             className="text-gray-800 ml-4 focus:outline-none"
             onClick={handleSearchIconClick}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#313131"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 4c-2.209 0-4 1.791-4 4 0 .764.218 1.478.584 2.091l-4.55 4.55a.999.999 0 101.414 1.414l4.55-4.55A6.963 6.963 0 0012 18c2.209 0 4-1.791 4-4s-1.791-4-4-4z"
-              />
-            </svg>
+            <BiSearchAlt size="2em" />
           </button>
         </div>
       </div>
@@ -112,6 +112,8 @@ function NavBar() {
           </div>
         </div>
       )}
+
+      {isSideBarOpen && <SideBar onClose={handleCloseSideBar} />}
     </nav>
   );
 }
