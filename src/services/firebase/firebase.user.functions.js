@@ -1,5 +1,5 @@
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
-import { generateUniqueUserFileName } from '../../utils';
+import { formatString, generateUniqueUserFileName } from '../../utils';
 import { updateProfile } from 'firebase/auth';
 
 const storage = getStorage();
@@ -16,7 +16,7 @@ const updateUserInfo = async (user, displayName, image) => {
 
     // Verifica se displayName foi fornecido e adiciona ao objeto updateData
     if (displayName) {
-      updateData.displayName = displayName;
+      updateData.displayName =  formatString(displayName);
     }
 
     // Verifica se image foi fornecido e faz o upload da imagem

@@ -1,7 +1,7 @@
 import { db } from './firebaseConfig';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
-import { generateUniquePetFileName } from '../../utils';
+import { formatString, generateUniquePetFileName } from '../../utils';
 
 
 console.log()
@@ -87,6 +87,7 @@ const createLostPet = async (pet, image) => {
     const imageUrl = await getDownloadURL(snapshot.ref);
 
     // Adiciona a URL da imagem ao objeto pet
+    pet.contact.name = formatString(pet.contact.name)
     const petWithImage = { ...pet, imageUrl, };
 
     // Adiciona os dados do pet ao Firestore
