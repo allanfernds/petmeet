@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { BiSearchAlt } from 'react-icons/bi';
+import { BiMenu, BiSearchAlt } from 'react-icons/bi';
 import SideBar from './SideBar';
+import petfinderLogo from '../assets/petfinder-logo.svg';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -26,22 +28,20 @@ function NavBar() {
             className="text-gray-800 mr-4 focus:outline-none"
             onClick={handleSideBarToggle}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#313131"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+            <BiMenu size="2em" />
           </button>
-          <h1 className="text-gray-800 text-2xl">PetFinder</h1>
+          <Link to="/home">
+            <div className="flex items-center justify-center">
+              <img
+                src={petfinderLogo}
+                alt="Petfinder Logo"
+                className="h-6 w-6"
+              />
+              <h1 className="text-gray-800 font-semibold text-2xl">
+                PetFinder
+              </h1>
+            </div>
+          </Link>
         </div>
 
         <div className="flex items-center">
@@ -81,7 +81,7 @@ function NavBar() {
             </button>
           </div>
 
-          <div className="mt-4 flex justify-between items-center ">
+          <div className="mt-4 flex justify-between items-center">
             <input
               type="radio"
               id="location"
