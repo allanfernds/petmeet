@@ -66,6 +66,7 @@ function CreateLostPetForm() {
             Nome do seu Pet:
           </label>
           <input
+            required
             placeholder="Ex: Melbi"
             type="text"
             name="name"
@@ -90,6 +91,7 @@ function CreateLostPetForm() {
         <div className="flex flex-col">
           <label className="text-gray-700">Qual raça?</label>
           <input
+            required
             placeholder="Ex: Rottweiler"
             type="text"
             name="breed"
@@ -105,6 +107,7 @@ function CreateLostPetForm() {
             <strong className="font-semibold text-green-500"> miau</strong>migo
           </label>
           <textarea
+            required
             placeholder="Descreva caracteristicas do seu pet"
             name="description"
             value={pet.description}
@@ -117,6 +120,7 @@ function CreateLostPetForm() {
             Onde ele foi visto pela ultima vez?
           </label>
           <input
+            required
             placeholder="Ex: Bairro Feira X"
             type="text"
             name="location"
@@ -127,20 +131,24 @@ function CreateLostPetForm() {
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700">
-            Quando ele foi visto pela ultima vez?
+            Quando ele foi visto pela última vez?
           </label>
           <input
+            required
             placeholder="Ex: 01/02/2003"
-            type="text"
+            type="date"
             name="lastSeenDate"
             value={pet.lastSeenDate}
             onChange={handleInputChange}
+            pattern="\d{2}/\d{2}/\d{4}"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+
         <div className="flex flex-col">
           <label className="text-gray-700">Nome do tutor</label>
           <input
+            required
             placeholder="Ex: Camila Gonçalves"
             type="text"
             name="contact.name"
@@ -152,6 +160,7 @@ function CreateLostPetForm() {
         <div className="flex flex-col">
           <label className="text-gray-700">Contact Email:</label>
           <input
+            required
             placeholder="Ex: email@mail.com"
             type="email"
             name="contact.email"
@@ -163,6 +172,7 @@ function CreateLostPetForm() {
         <div className="flex flex-col">
           <label className="text-gray-700">Contact Phone:</label>
           <input
+            required
             placeholder="+55 7598892-7560"
             type="text"
             name="contact.phone"
@@ -196,7 +206,7 @@ function CreateLostPetForm() {
           type="submit"
           className="bg-green-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-green-600"
         >
-          Create Lost Pet
+          Divulgar meu Pet
         </button>
       </form>
     </>
