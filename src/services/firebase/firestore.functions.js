@@ -1,6 +1,6 @@
 import { db } from './firebaseConfig';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { addDoc, collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { formatString, generateUniquePetFileName } from '../../utils';
 
 
@@ -9,12 +9,20 @@ console.log()
 const lostPetsCollection = collection(db, 'lostPets');
 
 const listAllLostPets = async () => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const querySnapshot = await getDocs(
+    query(
+      collection(db, 'lostPets'),
+      where('found', '==', false),
+      orderBy('lastSeenDate', 'desc')
+    )
+  );
+
   const docPetsData = querySnapshot.docs.map((doc) => ({
     id: doc.id,
-    ...doc.data()
+    ...doc.data(),
   }));
 
+  console.log(docPetsData);
   return docPetsData;
 };
 
