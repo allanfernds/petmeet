@@ -38,13 +38,16 @@ function LostPetCard({ pet }) {
           <div className="flex items-center">
             {getPetIcon()}
             <h3 className="text-2xl font-bold text-gray-7a00">{pet.name}</h3>
+            <strong className="ml-2 mt-1 font-normal text-center text-sm text-white p-1 rounded-sm bg-green-500">
+              {pet.breed}
+            </strong>
           </div>
         </div>
       </div>
       <div className="p-4 bg-white space-y-2">
         <div className="flex items-center">
           <FaUserAlt className="text-green-500 mr-2" />
-          <strong className="text-green-500 mr-2">Dono</strong>
+          <strong className="text-green-500 mr-2">Tutor</strong>
           <p className="text-gray-600 flex-grow">{pet.contact.name}</p>
         </div>
         <div className="flex items-center">
