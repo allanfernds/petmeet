@@ -76,7 +76,9 @@ function CreateLostPetForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">Cachorro ou Gato?</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Cachorro ou Gato?
+          </label>
           <select
             name="type"
             value={pet.type}
@@ -89,7 +91,9 @@ function CreateLostPetForm() {
           </select>
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">Qual raça?</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Qual raça?
+          </label>
           <input
             required
             placeholder="Ex: Rottweiler"
@@ -101,7 +105,7 @@ function CreateLostPetForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Descreva seu{' '}
             <strong className="font-semibold text-green-500">au</strong>migo ou
             <strong className="font-semibold text-green-500"> miau</strong>migo
@@ -116,7 +120,7 @@ function CreateLostPetForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Onde ele foi visto pela ultima vez?
           </label>
           <input
@@ -130,7 +134,7 @@ function CreateLostPetForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Quando ele foi visto pela última vez?
           </label>
           <input
@@ -146,7 +150,9 @@ function CreateLostPetForm() {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-gray-700">Nome do tutor</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Nome do tutor
+          </label>
           <input
             required
             placeholder="Ex: Camila Gonçalves"
@@ -158,7 +164,9 @@ function CreateLostPetForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">Contact Email:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Seu e-mail para contato:
+          </label>
           <input
             required
             placeholder="Ex: email@mail.com"
@@ -170,7 +178,9 @@ function CreateLostPetForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">Contact Phone:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Seu telefone
+          </label>
           <input
             required
             placeholder="+55 7598892-7560"
@@ -190,11 +200,15 @@ function CreateLostPetForm() {
               onChange={handleInputChange}
               className="mr-2"
             />
-            <span>Quer oferecer uma recompensa?</span>
+            <span className="block text-gray-700 text-sm font-bold">
+              Quer oferecer uma recompensa?
+            </span>
           </label>
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700">Image:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Uma foto do seu pet:
+          </label>
           <input
             type="file"
             accept="image/*"
