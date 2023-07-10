@@ -4,6 +4,8 @@ import { db } from '../services/firebase/firebaseConfig';
 import { useUserAuth } from '../context/UserAuthContext';
 import { getPetsByuserUid } from '../services/firebase/firestore.functions';
 import NavBar from '../components/NavBar';
+import Loading from '../components/Loading';
+import UserLostPetsCard from '../components/UserLostPetsCard';
 
 function UserPetsList() {
   const { user } = useUserAuth();
@@ -41,7 +43,7 @@ function UserPetsList() {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Renderiza uma mensagem de carregamento enquanto os pets estão sendo obtidos
+    return <Loading />; // Renderiza uma mensagem de carregamento enquanto os pets estão sendo obtidos
   }
 
   return (
@@ -49,18 +51,11 @@ function UserPetsList() {
       <NavBar />
       <h2>My Pets</h2>
       {pets.map((pet) => (
-        <div key={pet.id} className="card">
-          <h3>{pet.name}</h3>
-          <p>Type: {pet.type}</p>
-          <p>Breed: {pet.breed}</p>
-          <p>Location: {pet.location}</p>
-          <p>Last Seen Date: {pet.lastSeenDate}</p>
-          {!pet.found && (
-            <button onClick={() => handleMarkAsFound(pet.id)}>
-              Mark as Found
-            </button>
-          )}
-        </div>
+        <UserLostPetsCard
+          key={pet.id}
+          pet={pet}
+          handleMarkAsFound={handleMarkAsFound}
+        />
       ))}
     </div>
   );
