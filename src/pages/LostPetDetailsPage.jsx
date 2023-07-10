@@ -10,6 +10,9 @@ import {
   FaCat,
   FaDog,
   FaMoneyBill,
+  FaMapPin,
+  FaCalendar,
+  FaPaw,
 } from 'react-icons/fa';
 
 function NavBar() {
@@ -67,7 +70,7 @@ function LostPetDetailsPage() {
           <div className="relative">
             <img src={pet.imageUrl} alt={pet.name} className="w-full h-auto " />
             <div className="absolute top-0 left-0">
-              <h3 className="rounded-br-xl text-2xl flex items-center font-bold text-white bg-green-500 bg-opacity-80 p-2">
+              <h3 className="rounded-br-xl text-xl flex items-center font-semibold text-white bg-green-500 bg-opacity-80 p-2">
                 {pet.type === 'Gato' ? (
                   <FaCat className="inline-block mr-2 text-white" />
                 ) : pet.type === 'Cachorro' ? (
@@ -87,8 +90,15 @@ function LostPetDetailsPage() {
 
           <div className="p-4">
             <div className="flex items-center mb-4">
+              <FaPaw className="text-gray-500 mr-2" />
+              <strong className="text-gray-500 mr-2">Pet</strong>
+              <p className="text-gray-600 mr-4">{pet.name}</p>
+              <strong className="text-gray-500 mr-2">Raça: </strong>
+              <p className="text-gray-600">{pet.breed}</p>
+            </div>
+            <div className="flex items-center mb-4">
               <FaUser className="text-gray-500 mr-2" />
-              <strong className="text-gray-500 mr-2">Dono</strong>
+              <strong className="text-gray-500 mr-2">Tutor</strong>
               <p className="text-gray-600">{pet.contact.name}</p>
             </div>
             <div className="flex items-center mb-4">
@@ -114,15 +124,27 @@ function LostPetDetailsPage() {
                 Ligar
               </button>
             </div>
-            <p className="text-gray-600 mb-4">
-              Último local visto: {pet.location}
-            </p>
-            <p className="text-gray-600 mb-4">
-              Data em que sumiu: {pet.lastSeenDate}
-            </p>
-            <p className="text-gray-600 mb-4">
-              Mais Informações: {pet.description}
-            </p>
+            <div className="flex items-center mb-4">
+              <FaMapPin className="text-gray-600 mr-2" />
+              <p className="text-gray-600">
+                <strong>Último bairro visto: </strong>
+                {pet.location}
+              </p>
+            </div>
+            <div className="flex items-center mb-4">
+              <FaCalendar className="text-gray-600 mr-2" />
+              <p className="text-gray-600">
+                <strong>Última data visto: </strong>
+                {pet.lastSeenDate}
+              </p>
+            </div>
+            <div className="flex items-center mb-4">
+              <FaPaw className="text-gray-600 mr-2" />
+              <p className="text-gray-600">
+                <strong>Descrição: </strong>
+                {pet.description}
+              </p>
+            </div>
           </div>
         </div>
       )}
