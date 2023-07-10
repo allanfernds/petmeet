@@ -1,20 +1,28 @@
 import { db } from './firebaseConfig';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
-import { generateUniquePetFileName } from '../../utils';
+import { addDoc, collection, getDocs, orderBy, query, where } from 'firebase/firestore';
+import { formatString, generateUniquePetFileName } from '../../utils';
 
 
 console.log()
 
-const lostPetsCollection = collection(db, 'lostPets');
+// const lostPetsCollection = collection(db, 'lostPets');
 
 const listAllLostPets = async () => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const querySnapshot = await getDocs(
+    query(
+      collection(db, 'lostPets'),
+      where('found', '==', false),
+      orderBy('lastSeenDate', 'desc')
+    )
+  );
+
   const docPetsData = querySnapshot.docs.map((doc) => ({
     id: doc.id,
-    ...doc.data()
+    ...doc.data(),
   }));
 
+  console.log(docPetsData);
   return docPetsData;
 };
 
@@ -35,44 +43,25 @@ const getPetsByuserUid = async (userUid) => {
 }
 
 const getPetsByLocation = async (location) => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const q = query(collection(db, 'lostPets'), where('location', '==', location));
+  const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-
-  // Filter by location
-  const filteredPets = docPetsData.filter((pet) => {
-    const petLocation = pet.location.toLowerCase();
-    const filterLocation = location.toLowerCase();
-    return petLocation.includes(filterLocation);
-  });
-
-  return filteredPets;
+  console.log(docPetsData)
+  return docPetsData;
 };
 
 const getPetsByBreed = async (breed) => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const q = query(collection(db, 'lostPets'), where('breed', '==', breed));
+  const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-
-  // Filter by breed
-  const filteredPets = docPetsData.filter((pet) => {
-    const petBreed = pet.breed.toLowerCase();
-    const filterBreed = breed.toLowerCase();
-    return petBreed.includes(filterBreed);
-  });
-
-  return filteredPets;
+  return docPetsData;
 };
 
 const getPetsByType = async (type) => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const q = query(collection(db, 'lostPets'), where('type', '==', type));
+  const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-
-  // Filter by type
-  const filteredPets = docPetsData.filter((pet) => {
-    return pet.type.toLowerCase() === type.toLowerCase();
-  });
-
-  console.log(filteredPets);
-  return filteredPets;
+  return docPetsData;
 };
 
 const createLostPet = async (pet, image) => {
@@ -87,6 +76,7 @@ const createLostPet = async (pet, image) => {
     const imageUrl = await getDownloadURL(snapshot.ref);
 
     // Adiciona a URL da imagem ao objeto pet
+    pet.contact.name = formatString(pet.contact.name)
     const petWithImage = { ...pet, imageUrl, };
 
     // Adiciona os dados do pet ao Firestore

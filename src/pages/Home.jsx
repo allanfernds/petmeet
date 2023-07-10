@@ -1,19 +1,21 @@
 import NavBar from '../components/NavBar';
-import { useUserAuth } from '../context/UserAuthContext';
 import { Link } from 'react-router-dom';
+import { BiAddToQueue } from 'react-icons/bi';
 import LostPetsList from './LostPetsList';
 
 function Home() {
-  const { logOut } = useUserAuth();
-
   return (
     <div>
       <NavBar />
-      <button onClick={logOut}>Sair</button>
-      <hr />
-      <Link to="/create-lost-pet">
-        <button>Perdi meu pet</button>
-      </Link>
+
+      <div className="fixed bottom-4 right-4">
+        <Link to="/create-lost-pet">
+          <button className="bg-green-500 text-white rounded-full p-4 shadow-lg">
+            <BiAddToQueue size={24} />
+          </button>
+        </Link>
+      </div>
+
       <LostPetsList />
     </div>
   );
