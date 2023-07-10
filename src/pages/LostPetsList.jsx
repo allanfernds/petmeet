@@ -9,6 +9,7 @@ import {
 import { BsFilter, BsFillHouseFill, BsFillPersonFill } from 'react-icons/bs';
 import { BiX } from 'react-icons/bi';
 import FilterInput from '../components/FilterInput';
+import Loading from '../components/Loading';
 
 function LostPetsList() {
   const [lostPets, setLostPets] = useState([]);
@@ -71,7 +72,7 @@ function LostPetsList() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
