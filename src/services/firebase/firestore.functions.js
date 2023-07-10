@@ -6,7 +6,7 @@ import { formatString, generateUniquePetFileName } from '../../utils';
 
 console.log()
 
-const lostPetsCollection = collection(db, 'lostPets');
+// const lostPetsCollection = collection(db, 'lostPets');
 
 const listAllLostPets = async () => {
   const querySnapshot = await getDocs(
@@ -43,44 +43,25 @@ const getPetsByuserUid = async (userUid) => {
 }
 
 const getPetsByLocation = async (location) => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const q = query(collection(db, 'lostPets'), where('location', '==', location));
+  const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-
-  // Filter by location
-  const filteredPets = docPetsData.filter((pet) => {
-    const petLocation = pet.location.toLowerCase();
-    const filterLocation = location.toLowerCase();
-    return petLocation.includes(filterLocation);
-  });
-
-  return filteredPets;
+  console.log(docPetsData)
+  return docPetsData;
 };
 
 const getPetsByBreed = async (breed) => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const q = query(collection(db, 'lostPets'), where('breed', '==', breed));
+  const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-
-  // Filter by breed
-  const filteredPets = docPetsData.filter((pet) => {
-    const petBreed = pet.breed.toLowerCase();
-    const filterBreed = breed.toLowerCase();
-    return petBreed.includes(filterBreed);
-  });
-
-  return filteredPets;
+  return docPetsData;
 };
 
 const getPetsByType = async (type) => {
-  const querySnapshot = await getDocs(lostPetsCollection);
+  const q = query(collection(db, 'lostPets'), where('type', '==', type));
+  const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-
-  // Filter by type
-  const filteredPets = docPetsData.filter((pet) => {
-    return pet.type.toLowerCase() === type.toLowerCase();
-  });
-
-  console.log(filteredPets);
-  return filteredPets;
+  return docPetsData;
 };
 
 const createLostPet = async (pet, image) => {
