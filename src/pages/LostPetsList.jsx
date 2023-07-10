@@ -114,14 +114,14 @@ function LostPetsList() {
         {isFilterOpen && (
           <div className="fixed bottom-16 left-4 flex flex-col gap-2 mb-4">
             <button
-              className="flex items-center bg-gray-200 rounded-full px-4 py-2"
+              className="flex items-center bg-gray-100 shadow-md shadow-gray-400 rounded-full px-4 py-2"
               onClick={handleFilterByLocation}
             >
               <BsFillHouseFill className="text-green-500 mr-2" />
               <span>Filtrar por bairro</span>
             </button>
             <button
-              className="flex items-center bg-gray-200 rounded-full px-4 py-2"
+              className="flex items-center bg-gray-100 shadow-md shadow-gray-400 rounded-full px-4 py-2"
               onClick={handleFilterByBreed}
             >
               <BsFillPersonFill className="text-green-500 mr-2" />
@@ -130,10 +130,10 @@ function LostPetsList() {
           </div>
         )}
         <button
-          className="fixed bottom-4 left-4 bg-slate-50 rounded-full p-3 shadow-xl"
+          className="fixed bottom-4 left-4 bg-green-500 rounded-full p-3 shadow-xl"
           onClick={handleFilterClick}
         >
-          <BsFilter className="text-green-500" size="2em" />
+          <BsFilter className="text-white" size="2em" />
         </button>
       </div>
     </>
