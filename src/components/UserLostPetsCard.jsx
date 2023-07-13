@@ -15,9 +15,7 @@ function UserLostPetsCard({ pet, handleMarkAsFound }) {
         <p className="text-sm text-gray-600 mb-1">{pet.type}</p>
         <p className="text-sm text-gray-600 mb-1">{pet.breed}</p>
         <p className="text-sm text-gray-600 mb-1">{pet.location}</p>
-        <p className="text-sm text-gray-600 mb-1">
-          Last Seen Date: {pet.lastSeenDate}
-        </p>
+        <p className="text-sm text-gray-600 mb-1">{pet.lastSeenDate}</p>
         {!pet.found && (
           <button
             onClick={() => handleMarkAsFound(pet.id)}
