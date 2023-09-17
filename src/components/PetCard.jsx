@@ -25,7 +25,7 @@ function LostPetCard({ pet }) {
   };
 
   return (
-    <div className="rounded-lg overflow-hidden shadow-md my-5 w-96">
+    <div className="rounded-lg overflow-hidden shadow-md my-5 w-[370px]">
       {pet.offerReward && (
         <div className="bg-yellow-300 text-yellow-800 text-center px-2 py-1">
           <FaMoneyBillAlt className="inline-block mr-1" />
