@@ -10,7 +10,7 @@ const ProfileCheck = () => {
     // Verifica se o usuário está autenticado e possui nome de usuário e imagem de perfil
     if (user && user.displayName && user.photoURL) {
       console.log(user.displayName, user.photoURL);
-      navigate('/'); // Redireciona para a página inicial
+      navigate('/home'); // Redireciona para a página inicial
     } else {
       navigate('/update-user-info'); // Redireciona para o componente de atualização de informações
     }
