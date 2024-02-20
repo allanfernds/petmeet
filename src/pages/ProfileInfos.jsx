@@ -12,8 +12,12 @@ function ProfileInfo() {
 
       <div className="max-w-md mx-auto bg-white p-8">
         <h3 className="text-2xl font-bold mb-4">Profile Information</h3>
-        <div className="mt-4 rounded-full">
-          <img src={user.photoURL} alt="Profile" />
+        <div className="mt-10  border-emerald-500 flex items-center justify-center">
+          <img
+            className="rounded-full border-4 border-emerald-500"
+            src={user.photoURL}
+            alt="Profile"
+          />
         </div>
         <p className="text-center text-2xl mt-4 font-sans">
           {user.displayName}

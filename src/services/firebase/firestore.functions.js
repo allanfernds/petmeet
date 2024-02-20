@@ -1,12 +1,14 @@
 import { db } from './firebaseConfig';
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
-import { addDoc, collection, getDocs, orderBy, query, where } from 'firebase/firestore';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from 'firebase/firestore';
 import { formatString, generateUniquePetFileName } from '../../utils';
-
-
-console.log()
-
-// const lostPetsCollection = collection(db, 'lostPets');
 
 const listAllLostPets = async () => {
   const querySnapshot = await getDocs(
@@ -27,26 +29,29 @@ const listAllLostPets = async () => {
 };
 
 const getPetsByuserUid = async (userUid) => {
-    try {
-      const petsRef = collection(db, 'lostPets');
-      const q = query(petsRef, where('userId', '==', userUid));
+  try {
+    const petsRef = collection(db, 'lostPets');
+    const q = query(petsRef, where('userId', '==', userUid));
 
-      const querySnapshot = await getDocs(q);
-      const userPets = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      return userPets
-    } catch (error) {
-      console.log(error.message)
-    }
-}
+    const querySnapshot = await getDocs(q);
+    const userPets = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return userPets;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 const getPetsByLocation = async (location) => {
-  const q = query(collection(db, 'lostPets'), where('location', '==', location));
+  const q = query(
+    collection(db, 'lostPets'),
+    where('location', '==', location)
+  );
   const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
-  console.log(docPetsData)
+  console.log(docPetsData);
   return docPetsData;
 };
 
@@ -66,7 +71,10 @@ const getPetsByType = async (type) => {
 
 const createLostPet = async (pet, image) => {
   const storage = getStorage();
-  const storageRef = ref(storage, `lost-pets/${generateUniquePetFileName(pet)}.png`);
+  const storageRef = ref(
+    storage,
+    `lost-pets/${generateUniquePetFileName(pet)}.png`
+  );
 
   try {
     // Faz o upload da imagem para o Firebase Storage
@@ -76,8 +84,8 @@ const createLostPet = async (pet, image) => {
     const imageUrl = await getDownloadURL(snapshot.ref);
 
     // Adiciona a URL da imagem ao objeto pet
-    pet.contact.name = formatString(pet.contact.name)
-    const petWithImage = { ...pet, imageUrl, };
+    pet.contact.name = formatString(pet.contact.name);
+    const petWithImage = { ...pet, imageUrl };
 
     // Adiciona os dados do pet ao Firestore
     await addDoc(collection(db, 'lostPets'), petWithImage);
@@ -87,8 +95,6 @@ const createLostPet = async (pet, image) => {
     console.error('Erro ao criar pet perdido:', error);
   }
 };
-
-
 
 export {
   listAllLostPets,

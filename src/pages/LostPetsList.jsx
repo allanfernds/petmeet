@@ -20,25 +20,26 @@ function LostPetsList() {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
+    console.log('Inside useEffect');
     const fetchLostPets = async () => {
+      console.log('Fetching lost pets');
       let pets = [];
-
-      if (filterType === 'location') {
+      if (filterType === null && filterValue === null) {
+        console.log('Fetching all lost pets');
+        pets = await listAllLostPets();
+      } else if (filterType === 'location') {
+        console.log('Fetching lost pets by location');
         pets = await getPetsByLocation(filterValue);
       } else if (filterType === 'breed') {
+        console.log('Fetching lost pets by breed');
         pets = await getPetsByBreed(filterValue);
-      } else {
-        // Fetch all lost pets
-        pets = await listAllLostPets();
       }
-
       setLostPets(pets);
       setLoading(false);
     };
 
     fetchLostPets();
   }, [filterType, filterValue]);
-
   const handleFilterClick = () => {
     setIsFilterOpen(!isFilterOpen);
     setFilterType(null);
