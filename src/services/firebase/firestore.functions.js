@@ -59,6 +59,7 @@ const getPetsByBreed = async (breed) => {
   const q = query(collection(db, 'lostPets'), where('breed', '==', breed));
   const querySnapshot = await getDocs(q);
   const docPetsData = querySnapshot.docs.map((doc) => doc.data());
+  console.log(docPetsData);
   return docPetsData;
 };
 

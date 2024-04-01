@@ -7,8 +7,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-
-      <div className="fixed bottom-4 right-4">
+      <div className="fixed bottom-4 right-4 overflow-hidden">
         <Link to="/create-lost-pet">
           <button className="bg-green-500 text-white rounded-full p-4 shadow-lg">
             <BiAddToQueue size={24} />

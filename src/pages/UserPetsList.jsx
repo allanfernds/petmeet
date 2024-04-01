@@ -43,7 +43,7 @@ function UserPetsList() {
   };
 
   if (loading) {
-    return <Loading />; // Renderiza uma mensagem de carregamento enquanto os pets estão sendo obtidos
+    return <Loading />;
   }
 
   return (

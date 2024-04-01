@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createLostPet } from '../services/firebase/firestore.functions';
 import { useUserAuth } from '../context/UserAuthContext';
+import { createSlug } from '../utils';
 import NavBar from './NavBar';
 
 function CreateLostPetForm() {
@@ -51,6 +52,11 @@ function CreateLostPetForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const locationSlug = createSlug(pet.location);
+    setPet((prevPet) => ({
+      ...prevPet,
+      locationSlug,
+    }));
     createLostPet(pet, imageUrl);
   };
 
