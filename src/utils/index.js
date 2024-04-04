@@ -16,6 +16,11 @@ const generateUniqueUserFileName = (userName) => {
 };
 
 const formatString = (str) => {
+  // Verifica se a string é undefined ou null
+  if (!str) {
+    return '';
+  }
+
   // Converte a string para minúsculas
   const lowerCaseStr = str.toLowerCase();
 
