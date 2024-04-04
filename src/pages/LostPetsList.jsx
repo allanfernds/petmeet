@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import PetsContext from '../context/PetsContext';
 
 function LostPetsList() {
-  const { lostPets, setLostPets } = useContext(PetsContext);
+  const { lostPets, setLostPets, searchTerm } = useContext(PetsContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,19 +24,32 @@ function LostPetsList() {
     fetchLostPets();
   }, [setLostPets]);
 
+  const filteredPets =
+    searchTerm.length > 0
+      ? lostPets.filter((pet) =>
+          pet.location.toLowerCase().includes(searchTerm)
+        )
+      : [];
+
   if (loading) {
     return <Loading />;
   }
 
   return (
     <>
-      <div className="flex flex-col items-center mx-2 h-screen">
+      <div className="flex flex-col mt-16 items-center mx-2 h-screen">
         <div className="overflow-y-auto mt-12">
-          {lostPets.map((pet) => (
-            <Link key={pet.id} to={`/lost-pets/${pet.id}`}>
-              <LostPetCard pet={pet} />
-            </Link>
-          ))}
+          {searchTerm.length > 0
+            ? filteredPets.map((pet) => (
+                <Link key={pet.id} to={`/lost-pets/${pet.id}`}>
+                  <LostPetCard pet={pet} />
+                </Link>
+              ))
+            : lostPets.map((pet) => (
+                <Link key={pet.id} to={`/lost-pets/${pet.id}`}>
+                  <LostPetCard pet={pet} />
+                </Link>
+              ))}
         </div>
       </div>
     </>

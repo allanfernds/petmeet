@@ -3,8 +3,10 @@ import { createLostPet } from '../services/firebase/firestore.functions';
 import { useUserAuth } from '../context/UserAuthContext';
 import { createSlug } from '../utils';
 import NavBar from './NavBar';
+import { useNavigate } from 'react-router-dom';
 
 function CreateLostPetForm() {
+  const navigate = useNavigate();
   const { user } = useUserAuth();
 
   const [pet, setPet] = useState({
@@ -57,7 +59,9 @@ function CreateLostPetForm() {
       ...prevPet,
       locationSlug,
     }));
+
     createLostPet(pet, imageUrl);
+    navigate('/home');
   };
 
   return (

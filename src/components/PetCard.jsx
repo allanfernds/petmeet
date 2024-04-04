@@ -8,6 +8,8 @@ import {
   FaDog,
 } from 'react-icons/fa';
 
+import { formatString } from '../utils';
+
 function LostPetCard({ pet }) {
   const cardStyle = {
     backgroundImage: `url(${pet.imageUrl})`,
@@ -25,7 +27,7 @@ function LostPetCard({ pet }) {
   };
 
   return (
-    <div className="rounded-lg overflow-hidden shadow-md my-5 w-[370px]">
+    <div className="rounded-lg overflow-hidden shadow-md my-5 w-[370px] lg:w-[70%]">
       {pet.offerReward && (
         <div className="bg-yellow-300 text-yellow-800 text-center px-2 py-1">
           <FaMoneyBillAlt className="inline-block mr-1" />
@@ -39,7 +41,7 @@ function LostPetCard({ pet }) {
             {getPetIcon()}
             <h3 className="text-2xl font-bold text-gray-7a00">{pet.name}</h3>
             <strong className="ml-2  font-semibold text-center text-xs text-white p-1 rounded-md bg-green-500">
-              {pet.breed}
+              {formatString(pet.breed)}
             </strong>
           </div>
         </div>
@@ -53,7 +55,9 @@ function LostPetCard({ pet }) {
         <div className="flex items-center">
           <FaMapMarkerAlt className="text-green-500 mr-2" />
           <strong className="text-green-500 mr-2">Último local visto</strong>
-          <p className="text-gray-600 flex-grow">{pet.location}</p>
+          <p className="text-gray-600 flex-grow">
+            {formatString(pet.location)}
+          </p>
         </div>
         <div className="flex items-center">
           <FaCalendarAlt className="text-green-500 mr-2" />

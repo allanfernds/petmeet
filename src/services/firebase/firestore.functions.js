@@ -11,21 +11,25 @@ import {
 import { formatString, generateUniquePetFileName } from '../../utils';
 
 const listAllLostPets = async () => {
-  const querySnapshot = await getDocs(
-    query(
-      collection(db, 'lostPets'),
-      where('found', '==', false),
-      orderBy('lastSeenDate', 'desc')
-    )
-  );
+  try {
+    const querySnapshot = await getDocs(
+      query(
+        collection(db, 'lostPets'),
+        where('found', '==', false),
+        orderBy('lastSeenDate', 'desc')
+      )
+    );
 
-  const docPetsData = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+    const docPetsData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-  console.log(docPetsData);
-  return docPetsData;
+    console.log(docPetsData);
+    return docPetsData;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getPetsByuserUid = async (userUid) => {
@@ -86,6 +90,10 @@ const createLostPet = async (pet, image) => {
 
     // Adiciona a URL da imagem ao objeto pet
     pet.contact.name = formatString(pet.contact.name);
+
+    pet.breed.toLowerCase();
+    pet.breed.toLowerCase();
+
     const petWithImage = { ...pet, imageUrl };
 
     // Adiciona os dados do pet ao Firestore

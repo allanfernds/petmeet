@@ -5,9 +5,20 @@ const PetsContext = createContext();
 
 export const PetsProvider = ({ children }) => {
   const [lostPets, setLostPets] = useState([]);
+  const [filteredPets, setFilteredPets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <PetsContext.Provider value={{ lostPets, setLostPets }}>
+    <PetsContext.Provider
+      value={{
+        lostPets,
+        setLostPets,
+        searchTerm,
+        setSearchTerm,
+        filteredPets,
+        setFilteredPets,
+      }}
+    >
       {children}
     </PetsContext.Provider>
   );
