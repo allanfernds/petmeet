@@ -10,11 +10,13 @@ import CreateLostPetForm from './components/CreateLostPetForm';
 import LostPetDetailsPage from './pages/LostPetDetailsPage';
 import ProfileInfo from './pages/ProfileInfos';
 import UserPetsList from './pages/UserPetsList';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
-    <>
+    <main className="bg-slate-100">
       <UserAuthContextProvider>
+        <NavBar />
         <Routes>
           <Route
             path="/home"
@@ -62,7 +64,7 @@ function App() {
           />
         </Routes>
       </UserAuthContextProvider>
-    </>
+    </main>
   );
 }
 

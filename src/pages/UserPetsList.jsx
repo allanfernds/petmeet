@@ -3,7 +3,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../services/firebase/firebaseConfig';
 import { useUserAuth } from '../context/UserAuthContext';
 import { getPetsByuserUid } from '../services/firebase/firestore.functions';
-import NavBar from '../components/NavBar';
+
 import Loading from '../components/Loading';
 import UserLostPetsCard from '../components/UserLostPetsCard';
 
@@ -48,7 +48,6 @@ function UserPetsList() {
 
   return (
     <div>
-      <NavBar />
       <div className="px-4 mt-20 bg-slate-100">
         {pets.map((pet) => (
           <UserLostPetsCard

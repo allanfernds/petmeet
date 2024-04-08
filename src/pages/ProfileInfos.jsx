@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useUserAuth } from '../context/UserAuthContext';
-import NavBar from '../components/NavBar';
 import { FaPaw, FaEdit } from 'react-icons/fa';
 
 function ProfileInfo() {
@@ -8,8 +7,6 @@ function ProfileInfo() {
 
   return (
     <div>
-      <NavBar />
-
       <div className="max-w-md mx-auto bg-white p-8">
         <h3 className="text-2xl font-bold mb-4">Profile Information</h3>
         <div className="mt-10  border-emerald-500 flex items-center justify-center">

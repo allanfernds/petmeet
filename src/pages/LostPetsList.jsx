@@ -24,10 +24,12 @@ function LostPetsList() {
     fetchLostPets();
   }, [setLostPets]);
 
+  const searchTermLowerCase = searchTerm.toLowerCase(); // Convertendo o searchTerm para minúsculas
+
   const filteredPets =
-    searchTerm.length > 0
-      ? lostPets.filter((pet) =>
-          pet.location.toLowerCase().includes(searchTerm)
+    searchTermLowerCase.length > 0
+      ? lostPets.filter(
+          (pet) => pet.location.toLowerCase().includes(searchTermLowerCase) // Convertendo o texto a ser pesquisado para minúsculas
         )
       : [];
 
@@ -39,7 +41,7 @@ function LostPetsList() {
     <>
       <div className="flex flex-col mt-16 items-center mx-2 h-screen">
         <div className="overflow-y-auto mt-12">
-          {searchTerm.length > 0
+          {searchTermLowerCase.length > 0
             ? filteredPets.map((pet) => (
                 <Link key={pet.id} to={`/lost-pets/${pet.id}`}>
                   <LostPetCard pet={pet} />

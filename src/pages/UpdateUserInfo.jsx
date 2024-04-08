@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/UserAuthContext';
 import { updateUserInfo } from '../services/firebase/firebase.user.functions';
-import NavBar from '../components/NavBar';
 
 const UpdateUserInfo = () => {
   const [displayName, setDisplayName] = useState('');
@@ -38,7 +37,6 @@ const UpdateUserInfo = () => {
 
   return (
     <>
-      <NavBar />
       <div className="mt-16 max-w-md mx-auto p-4 bg-white rounded shadow">
         <h2 className="text-2xl font-semibold mb-4">Atualizar seus dados</h2>
         <form onSubmit={handleUpdateInfo}>
