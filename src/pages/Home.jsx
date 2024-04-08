@@ -4,11 +4,11 @@ import { FomrButton } from '../components/Buttons';
 
 function Home() {
   return (
-    <div>
+    <>
       <NavBar />
       <LostPetsList />
       <FomrButton />
-    </div>
+    </>
   );
 }
 

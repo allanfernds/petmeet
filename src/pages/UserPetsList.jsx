@@ -49,14 +49,15 @@ function UserPetsList() {
   return (
     <div>
       <NavBar />
-      <h2>My Pets</h2>
-      {pets.map((pet) => (
-        <UserLostPetsCard
-          key={pet.id}
-          pet={pet}
-          handleMarkAsFound={handleMarkAsFound}
-        />
-      ))}
+      <div className="px-4 mt-20 bg-slate-100">
+        {pets.map((pet) => (
+          <UserLostPetsCard
+            key={pet.id}
+            pet={pet}
+            handleMarkAsFound={handleMarkAsFound}
+          />
+        ))}
+      </div>
     </div>
   );
 }
