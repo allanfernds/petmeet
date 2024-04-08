@@ -1,33 +1,19 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../services/firebase/firebaseConfig';
 import {
-  FaArrowLeft,
+  FaCoins,
   FaUser,
   FaPhone,
   FaWhatsapp,
   FaCat,
   FaDog,
-  FaMoneyBill,
   FaMapPin,
   FaCalendar,
   FaPaw,
 } from 'react-icons/fa';
 import Loading from '../components/Loading';
-
-function NavBar() {
-  return (
-    <nav className="bg-white py-4 px-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <Link to="/home" className="flex items-center">
-          <FaArrowLeft className="text-gray-800 mr-2" />
-          <h1 className="text-gray-800 text-2xl">PetFinder</h1>
-        </Link>
-      </div>
-    </nav>
-  );
-}
 
 function LostPetDetailsPage() {
   const { petId } = useParams();
@@ -67,21 +53,20 @@ function LostPetDetailsPage() {
   };
 
   return (
-    <div>
-      <NavBar />
+    <div className="pt-16">
       {loading ? (
         <Loading />
       ) : (
         pet && (
           <div className="max-w-md mx-auto bg-white shadow-md overflow-hidden">
-            <div className="relative">
+            <div>
               <img
                 src={pet.imageUrl}
                 alt={pet.name}
                 className="w-full h-auto "
               />
-              <div className="absolute top-0 left-0">
-                <h3 className="rounded-br-xl text-xl flex items-center font-semibold text-white bg-green-500 bg-opacity-80 p-2">
+              <div className="top-0 left-0">
+                <h3 className="text-xl flex items-center font-semibold text-white bg-green-500 bg-opacity-80 p-2">
                   {pet.type === 'Gato' ? (
                     <FaCat className="inline-block mr-2 text-white" />
                   ) : pet.type === 'Cachorro' ? (
@@ -94,8 +79,8 @@ function LostPetDetailsPage() {
 
             {pet.offerReward && (
               <div className="bg-yellow-300 text-yellow-800 text-center px-2 py-1 border-b-2 border-green-500">
-                <FaMoneyBill className="inline-block mr-1" />
-                Recompensa disponível
+                <FaCoins className="inline-block mr-1" />
+                Oferece recompensa
               </div>
             )}
 
@@ -117,23 +102,25 @@ function LostPetDetailsPage() {
                 <strong className="text-gray-500 mr-2">Telefone</strong>
                 <p className="text-gray-600">{pet.contact.phone}</p>
               </div>
-              <div className="flex items-center mb-4">
-                <FaWhatsapp className="text-green-500 mr-2" />
-                <button
-                  className="text-green-500 focus:outline-none"
-                  onClick={handleWhatsappClick}
-                >
-                  Conversar no WhatsApp
-                </button>
-              </div>
-              <div className="flex items-center mb-4">
-                <FaPhone className="text-blue-500 mr-2" />
-                <button
-                  className="text-blue-500 focus:outline-none"
-                  onClick={handleCallClick}
-                >
-                  Ligar
-                </button>
+              <div className="flex gap-2">
+                <div className="flex items-center text-green-600  mb-4 bg-green-200 p-4 rounded-md hover:bg-green-400 hover:text-white">
+                  <FaWhatsapp className="mr-2" size="1.5em" />
+                  <button
+                    className="focus:outline-none "
+                    onClick={handleWhatsappClick}
+                  >
+                    Conversar no WhatsApp
+                  </button>
+                </div>
+                <div className="flex items-center text-blue-500 mb-4 bg-blue-200 py-4 px-6 rounded-md hover:bg-blue-400 hover:text-white">
+                  <FaPhone className=" mr-2" size="1.3em" />
+                  <button
+                    className="focus:outline-none"
+                    onClick={handleCallClick}
+                  >
+                    Ligar
+                  </button>
+                </div>
               </div>
               <div className="flex items-center mb-4">
                 <FaMapPin className="text-gray-600 mr-2" />

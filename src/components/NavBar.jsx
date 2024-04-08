@@ -5,20 +5,26 @@ import petfinderLogo from '../assets/petfinder-logo.svg';
 import { Link } from 'react-router-dom';
 import PetsContext from '../context/PetsContext';
 import { useLocation } from 'react-router-dom';
+import { useUserAuth } from '../context/UserAuthContext';
 
 function NavBar() {
   const { searchTerm, setSearchTerm } = useContext(PetsContext);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const { user } = useUserAuth();
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
   const location = useLocation();
-  console.log(location);
+
+  if (!user) {
+    return null;
+  }
 
   return (
-    <nav className="bg-white py-4 px-6  fixed top-0 w-full shadow-lg border">
+    <nav className="bg-white py-4 px-6 fixed top-0 w-full shadow-lg border">
       <div className="flex flex-col justify-center items-center">
         <div className="px-2 flex flex-row-reverse w-96 justify-center">
           <button

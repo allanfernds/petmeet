@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { createLostPet } from '../services/firebase/firestore.functions';
 import { useUserAuth } from '../context/UserAuthContext';
 import { createSlug } from '../utils';
-import NavBar from './NavBar';
 import { useNavigate } from 'react-router-dom';
 
 function CreateLostPetForm() {
   const navigate = useNavigate();
   const { user } = useUserAuth();
-
   const [pet, setPet] = useState({
     userId: user.uid,
     name: '',
@@ -65,11 +63,10 @@ function CreateLostPetForm() {
   };
 
   return (
-    <>
-      <NavBar />
+    <div className="bg-white flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="max-w-xs h-full mx-auto space-y-4 mt-20 mb-20"
+        className="max-w-xs h-full space-y-4 mt-20 pb-10 bg-white"
       >
         <div className="flex flex-col mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -91,6 +88,7 @@ function CreateLostPetForm() {
           </label>
           <select
             name="type"
+            required
             value={pet.type}
             onChange={handleInputChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -105,7 +103,6 @@ function CreateLostPetForm() {
             Qual raça?
           </label>
           <input
-            required
             placeholder="Ex: Rottweiler"
             type="text"
             name="breed"
@@ -149,7 +146,6 @@ function CreateLostPetForm() {
           </label>
           <input
             required
-            placeholder="Ex: 01/02/2003"
             type="date"
             name="lastSeenDate"
             value={pet.lastSeenDate}
@@ -211,29 +207,29 @@ function CreateLostPetForm() {
               className="mr-2"
             />
             <span className="block text-gray-700 text-sm font-bold">
-              Quer oferecer uma recompensa?
+              Marque se você deseja oferecer Recompensa
             </span>
           </label>
         </div>
-        <div className="flex flex-col">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+        <div className="mx-auto max-w-xs h-32">
+          <label className="mb-1 block text-sm font-medium text-gray-700">
             Uma foto do seu pet:
           </label>
           <input
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-green-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-green-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
           />
         </div>
         <button
           type="submit"
-          className="bg-green-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-green-600"
+          className="bg-green-500 w-full text-white py-2 mt-40 px-4 rounded-md shadow-sm hover:bg-green-600"
         >
           Divulgar meu Pet
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

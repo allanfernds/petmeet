@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { useLocation } from 'react-router-dom';
 
-import { FaPaw, FaUser, FaHome } from 'react-icons/fa';
+import { FaPaw, FaUser, FaHome, FaPlus } from 'react-icons/fa';
 const links = [
   { name: 'Home', href: '/home', icon: <FaHome /> },
   { name: 'Meu Perfil', href: '/profile', icon: <FaUser /> },
+  {
+    name: 'Divulgar um pet',
+    href: '/create-lost-pet',
+    icon: <FaPlus />,
+  },
   { name: 'Meus Pets', href: '/user-pets-list', icon: <FaPaw /> },
 ];
 

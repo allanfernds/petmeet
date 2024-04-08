@@ -23,7 +23,7 @@ function SideBar({ onClose }) {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 flex justify-end z-50">
+    <div className="fixed inset-0 flex justify-end z-50 transition-all ">
       <div className="fixed inset-0 bg-black bg-opacity-50"></div>
       <div
         className="fixed right-0 top-0 h-full w-64 bg-white transform transition-transform duration-300 ease-in-out"

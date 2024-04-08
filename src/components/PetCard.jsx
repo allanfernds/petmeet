@@ -2,7 +2,7 @@
 import {
   FaMapMarkerAlt,
   FaCalendarAlt,
-  FaMoneyBillAlt,
+  FaCoins,
   FaUserAlt,
   FaCat,
   FaDog,
@@ -29,8 +29,8 @@ function LostPetCard({ pet }) {
   return (
     <div className="rounded-lg overflow-hidden shadow-md my-5 w-[370px] lg:w-[70%]">
       {pet.offerReward && (
-        <div className="bg-yellow-300 text-yellow-800 text-center px-2 py-1">
-          <FaMoneyBillAlt className="inline-block mr-1" />
+        <div className="bg-yellow-400 text-yellow-800 text-center px-2 py-1">
+          <FaCoins className="inline-block mr-1" />
           Ofereço recompensa
         </div>
       )}

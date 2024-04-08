@@ -39,7 +39,7 @@ function LostPetsList() {
 
   return (
     <>
-      <div className="flex flex-col mt-16 items-center mx-2 h-screen">
+      <div className="flex flex-col items-center pt-16 h-screen">
         <div className="overflow-y-auto mt-12">
           {searchTermLowerCase.length > 0
             ? filteredPets.map((pet) => (

@@ -1,7 +1,14 @@
 import PhoneSignUp from './PhoneSignUp';
 import petfinderLogo from '../assets/petfinder-logo.svg';
+import { useUserAuth } from '../context/UserAuthContext';
+import { Navigate } from 'react-router-dom';
 
 function LoginPage() {
+  const { user } = useUserAuth();
+  if (user) {
+    return <Navigate to="/home" />;
+  }
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <img
