@@ -114,8 +114,9 @@ function CreateLostPetForm() {
         <div className="flex flex-col">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Descreva seu{' '}
-            <strong className="font-semibold text-green-500">au</strong>migo ou
-            <strong className="font-semibold text-green-500"> miau</strong>migo
+            <strong className="font-semibold text-sky-500">au</strong>migo ou
+            <strong className="font-semibold text-sky-500"> miau</strong>
+            migo
           </label>
           <textarea
             required
@@ -219,12 +220,12 @@ function CreateLostPetForm() {
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-green-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-green-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
+            className="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-sky-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-sky-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
           />
         </div>
         <button
           type="submit"
-          className="bg-green-500 w-full text-white py-2 mt-40 px-4 rounded-md shadow-sm hover:bg-green-600"
+          className="bg-sky-500 w-full text-white py-2 mt-40 px-4 rounded-md shadow-sm hover:bg-sky-600"
         >
           Divulgar meu Pet
         </button>
