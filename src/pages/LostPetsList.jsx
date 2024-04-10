@@ -29,7 +29,9 @@ function LostPetsList() {
   const filteredPets =
     searchTermLowerCase.length > 0
       ? lostPets.filter(
-          (pet) => pet.location.toLowerCase().includes(searchTermLowerCase) // Convertendo o texto a ser pesquisado para minúsculas
+          (pet) =>
+            pet.location.toLowerCase().includes(searchTermLowerCase) || // Verificando se a localização inclui o termo de pesquisa
+            pet.breed.toLowerCase().includes(searchTermLowerCase) // Verificando se a raça inclui o termo de pesquisa
         )
       : [];
 
@@ -39,7 +41,7 @@ function LostPetsList() {
 
   return (
     <>
-      <div className="flex flex-col items-center pt-16 h-screen">
+      <div className="flex flex-wrap justify-center items-start pt-16 h-full bg-neutral-100">
         <div className="overflow-y-auto mt-12">
           {searchTermLowerCase.length > 0
             ? filteredPets.map((pet) => (

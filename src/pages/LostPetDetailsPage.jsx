@@ -63,10 +63,10 @@ function LostPetDetailsPage() {
               <img
                 src={pet.imageUrl}
                 alt={pet.name}
-                className="w-full h-auto "
+                className="w-full h-auto"
               />
               <div className="top-0 left-0">
-                <h3 className="text-xl flex items-center font-semibold text-white bg-green-500 bg-opacity-80 p-2">
+                <h3 className="text-xl flex items-center font-semibold text-white bg-sky-500 bg-opacity-80 p-2">
                   {pet.type === 'Gato' ? (
                     <FaCat className="inline-block mr-2 text-white" />
                   ) : pet.type === 'Cachorro' ? (
@@ -78,7 +78,7 @@ function LostPetDetailsPage() {
             </div>
 
             {pet.offerReward && (
-              <div className="bg-yellow-300 text-yellow-800 text-center px-2 py-1 border-b-2 border-green-500">
+              <div className="bg-yellow-300 text-amber-700 text-center px-2 py-1  border-sky-500">
                 <FaCoins className="inline-block mr-1" />
                 Oferece recompensa
               </div>
@@ -103,7 +103,7 @@ function LostPetDetailsPage() {
                 <p className="text-gray-600">{pet.contact.phone}</p>
               </div>
               <div className="flex gap-2">
-                <div className="flex items-center text-green-600  mb-4 bg-green-200 p-4 rounded-md hover:bg-green-400 hover:text-white">
+                <div className="flex items-center text-white font-semibold  mb-4 bg-sky-400 py-3 px-4 rounded-md hover:bg-sky-500 hover:text-white">
                   <FaWhatsapp className="mr-2" size="1.5em" />
                   <button
                     className="focus:outline-none "
@@ -112,7 +112,7 @@ function LostPetDetailsPage() {
                     Conversar no WhatsApp
                   </button>
                 </div>
-                <div className="flex items-center text-blue-500 mb-4 bg-blue-200 py-4 px-6 rounded-md hover:bg-blue-400 hover:text-white">
+                <div className="flex items-center text-white font-semibold mb-4 bg-blue-400 py-3 px-4 rounded-md hover:bg-blue-500 hover:text-white">
                   <FaPhone className=" mr-2" size="1.3em" />
                   <button
                     className="focus:outline-none"
@@ -133,10 +133,10 @@ function LostPetDetailsPage() {
                 <FaCalendar className="text-gray-600 mr-2" />
                 <p className="text-gray-600">
                   <strong>Última data visto: </strong>
-                  {pet.lastSeenDate}
+                  {pet.lastSeenDate.split('-').reverse().join('/')}
                 </p>
               </div>
-              <div className="flex items-center mb-4 whitespace-normal bg-green-100 p-2 rounded-lg">
+              <div className="flex items-center mb-4 whitespace-normal bg-sky-100 p-2 rounded-lg">
                 <p className="text-gray-600">
                   <strong>Descrição: </strong>
                   {pet.description}
