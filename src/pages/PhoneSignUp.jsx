@@ -65,7 +65,7 @@ const PhoneSignUp = () => {
           <div className="flex flex-col items-center justify-center">
             <button
               type="submit"
-              className="bg-green-500 text-white px-4 py-2 rounded w-full mt-6 flex items-center justify-center text-xl"
+              className="bg-sky-500 text-white px-4 py-2 rounded w-full mt-6 flex items-center justify-center text-xl"
             >
               {loading ? (
                 <FaSpinner className="animate-spin m-1" />
@@ -92,7 +92,7 @@ const PhoneSignUp = () => {
           <div className="flex flex-col items-center justify-center">
             <button
               type="submit"
-              className="bg-green-500 text-white px-2 py-2 rounded w-full mb-3 text-center"
+              className="bg-sky-500 text-white px-2 py-2 rounded w-full mb-3 text-center"
             >
               {loading ? (
                 <FaSpinner className="animate-spin m-1 text-center" />

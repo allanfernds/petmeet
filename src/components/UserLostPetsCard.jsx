@@ -16,7 +16,9 @@ function UserLostPetsCard({ pet, handleMarkAsFound }) {
           <p className="text-sm text-gray-600 mb-1">{pet.type}</p>
           <p className="text-sm text-gray-600 mb-1">{pet.breed}</p>
           <p className="text-sm text-gray-600 mb-1">{pet.location}</p>
-          <p className="text-sm text-gray-600 mb-1">{pet.lastSeenDate}</p>
+          <p className="text-sm text-gray-600 mb-1">
+            {pet.lastSeenDate.split('-').reverse().join('/')}
+          </p>
 
           {pet.found ? (
             <button
@@ -28,7 +30,7 @@ function UserLostPetsCard({ pet, handleMarkAsFound }) {
           ) : (
             <button
               onClick={() => handleMarkAsFound(pet.id)}
-              className="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded mt-2"
+              className="bg-sky-500 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded mt-2"
             >
               Marcar como encontrado
             </button>

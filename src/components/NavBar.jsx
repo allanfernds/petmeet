@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PetsContext from '../context/PetsContext';
 import { useLocation } from 'react-router-dom';
 import { useUserAuth } from '../context/UserAuthContext';
+import { FaHome } from 'react-icons/fa';
 
 function NavBar() {
   const { searchTerm, setSearchTerm } = useContext(PetsContext);
@@ -24,11 +25,11 @@ function NavBar() {
   }
 
   return (
-    <nav className="bg-white py-4 px-6 fixed top-0 w-full shadow-lg border">
+    <nav className="bg-zinc-50 py-4 px-6 fixed top-0 w-full shadow border rounded-b-lg">
       <div className="flex flex-col justify-center items-center">
-        <div className="px-2 flex flex-row-reverse w-96 justify-center">
+        <div className="px-2 flex flex-row-reverse w-96 items-center justify-between ">
           <button
-            className=" text-gray-800  focus:outline-none relative left-24"
+            className=" text-gray-800  focus:outline-none"
             onClick={() => setIsSideBarOpen(!isSideBarOpen)}
           >
             <BiMenu size="2em" />
@@ -45,12 +46,19 @@ function NavBar() {
               </h1>
             </div>
           </Link>
+          {location.pathname !== '/home' ? (
+            <Link to="/home">
+              <FaHome size="1.5em" />
+            </Link>
+          ) : (
+            ''
+          )}
         </div>
         <div className="flex justify-center">
           {location.pathname === '/home' ? (
             <input
               type="text"
-              placeholder="Pesquisar"
+              placeholder="Pesquise por Bairro ou Raça"
               className="mt-2 border border-gray-300 w-[370px]  rounded-md p-2"
               value={searchTerm}
               onChange={handleSearchChange}
