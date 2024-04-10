@@ -9,9 +9,9 @@ function ProfileInfo() {
     <div>
       <div className="max-w-md mx-auto bg-white p-8">
         <h3 className="text-2xl font-bold mb-4">Profile Information</h3>
-        <div className="mt-10  border-emerald-500 flex items-center justify-center">
+        <div className="mt-10  border-sky-500 flex items-center justify-center">
           <img
-            className="rounded-full border-4 border-emerald-500"
+            className="rounded-full border-4 border-sky-500"
             src={user.photoURL}
             alt="Profile"
           />
@@ -22,7 +22,7 @@ function ProfileInfo() {
         <p className="text-center text-gray-500">{user.phoneNumber}</p>
         <div className="flex justify-between mt-8">
           <Link to="/user-pets-list">
-            <button className="flex items-center bg-green-500 text-white py-2 px-4 rounded">
+            <button className="flex items-center bg-sky-500 text-white py-2 px-4 rounded">
               <FaPaw className="mr-2" /> Meus Pets
             </button>
           </Link>
