@@ -14,7 +14,7 @@ const links = [
     icon: <FaPlus />,
   },
   { name: 'Meus Pets', href: '/user-pets-list', icon: <FaPaw /> },
-  { name: 'Sobre o PetFinder', href: '/aboutus', icon: <FaQuestion /> },
+  { name: 'Sobre o PetMeet', href: '/aboutus', icon: <FaQuestion /> },
 ];
 
 export function NavLinks({ onClose }) {

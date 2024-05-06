@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import SideBar from './SideBar';
-import petfinderLogo from '../assets/petfinder-logo.svg';
+import PetFindLogo from '../assets/PetFind-logo.svg';
 import { Link } from 'react-router-dom';
 import PetsContext from '../context/PetsContext';
 import { useLocation } from 'react-router-dom';
@@ -36,14 +36,8 @@ function NavBar() {
           </button>
           <Link to="/home">
             <div className="flex items-center justify-center">
-              <img
-                src={petfinderLogo}
-                alt="Petfinder Logo"
-                className="h-6 w-6"
-              />
-              <h1 className="text-gray-800 font-semibold text-2xl">
-                PetFinder
-              </h1>
+              <img src={PetFindLogo} alt="PetFind Logo" className="h-6 w-6" />
+              <h1 className="text-gray-800 font-semibold text-2xl">PetMeet</h1>
             </div>
           </Link>
           {location.pathname !== '/home' ? (
