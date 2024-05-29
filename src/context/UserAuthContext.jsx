@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useState } from 'react';
 import {
   onAuthStateChanged,
@@ -19,13 +18,17 @@ export function UserAuthContextProvider({ children }) {
   }
 
   function setUpRecaptha(number) {
-    const recaptchaVerifier = new RecaptchaVerifier(
-      'recaptcha-container',
-      {},
-      auth
-    );
-    recaptchaVerifier.render();
-    return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+    try {
+      const recaptchaVerifier = new RecaptchaVerifier(
+        'recaptcha-container',
+        {},
+        auth
+      );
+      recaptchaVerifier.render();
+      return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
